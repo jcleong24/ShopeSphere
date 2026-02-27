@@ -3,19 +3,24 @@ left to right direction
 
 actor User
 
-rectangle "Commerce App" as App {
+rectangle "Ecom App" as App {
 }
 
 rectangle "Splash Screen" as Splash
+rectangle "Main Screen" as Main
 rectangle "Product Listing" as ProductList
 rectangle "Product Details" as ProductDetails
 rectangle "Checkout" as Checkout
+rectangle "Settings" as Settings
 
 User --> App
 
 App --> Splash
+App --> Main
 App --> ProductList
 App --> ProductDetails
 App --> Checkout
+App --> Settings
+
 
 @enduml

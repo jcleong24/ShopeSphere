@@ -1,20 +1,17 @@
 import 'package:flutter_user_ecomm_app/core/routers/route_name.dart';
 import 'package:go_router/go_router.dart';
+import '../../screens/product_details_screen.dart';
 import '../../screens/cart_screen.dart';
 import '../../screens/checkout_screen.dart';
 import '../../screens/home_screen.dart';
 import '../../screens/payment_screen.dart';
 import '../../screens/product_details_screen.dart';
-import '../../screens/splash_screen.dart';
+// import '../../screens/splash_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: RouteNames.splash,
+    initialLocation: RouteNames.productDetails,
     routes: [
-      GoRoute(
-        path: RouteNames.splash,
-        builder: (context, state) => const SplashScreen(),
-      ),
       GoRoute(
         path: RouteNames.home,
         builder: (context, state) => const ProductListScreen(),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_user_ecomm_app/core/theme/style_manager.dart';
 import 'package:flutter_user_ecomm_app/domain/bloc/product/product_bloc.dart';
 import 'package:go_router/go_router.dart';
+
 import '../core/routers/route_name.dart';
 import '../domain/bloc/product/product_event.dart';
 import '../domain/bloc/product/product_state.dart';

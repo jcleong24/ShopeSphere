@@ -1,0 +1,50 @@
+@startuml bloc_uml_diagram
+title Ecommerce App - BLoC UML Diagram
+
+' =========================
+' 1) Architecture Overview
+' =========================
+skinparam packageStyle rectangle
+
+package "UI (Screens)" {
+  [ProductListScreen]
+  [ProductDetailsScreen]
+  [CartScreen]
+  [CheckoutScreen]
+}
+
+package "BLoC Layer" {
+  [ProductBloc]
+  [CartBloc]
+  [OrderBloc]
+  [PaymentBloc]
+}
+
+package "Data / Services" {
+  interface ProductRepository
+  interface OrderRepository
+  interface PaymentService
+}
+
+package "External Systems" {
+  [Firestore]
+  [Backend API]
+  [Stripe Sandbox]
+}
+
+[ProductListScreen] --> [ProductBloc]
+[ProductDetailsScreen] --> [ProductBloc]
+[ProductDetailsScreen] --> [CartBloc]
+[CartScreen] --> [CartBloc]
+[CheckoutScreen] --> [OrderBloc]
+[CheckoutScreen] --> [PaymentBloc]
+
+[ProductBloc] --> ProductRepository
+[OrderBloc] --> OrderRepository
+[PaymentBloc] --> PaymentService
+
+ProductRepository --> [Firestore]
+OrderRepository --> [Firestore]
+PaymentService --> [Backend API]
+[Backend API] --> [Stripe Sandbox]
+

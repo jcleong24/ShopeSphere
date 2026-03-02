@@ -1,5 +1,5 @@
-@startuml cart_updating_state
-title Feature State (Scoped) - Cart Updating (CartProvider)
+@startuml cart_bloc_state_machine
+title State Machine - Cart BLoC (CartProvider)
 
 [*] --> Idle
 

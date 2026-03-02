@@ -1,5 +1,5 @@
 @startuml payment_bloc_state_machine
-title Payment Bloc - State Machine
+title State Machine - Payment BLoC 
 [*] --> Idle
 
 Idle --> Initiating : InitiatePayment(orderId, amount)

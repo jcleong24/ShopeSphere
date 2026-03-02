@@ -1,0 +1,30 @@
+@startuml bloc_state_machines
+title State Machines - Product BLoC  
+
+' ' =========================
+' ' ProductBloc - Product List State Machine
+' ' =========================
+state "ProductBloc - List" as PList {
+  [*] --> initial
+  initial --> onLoading : ProductRequested
+  onLoading --> onLoaded : ProductsFetched
+  onLoading --> error : FetchFailed
+  error --> onLoading : Retry
+}
+
+' ' =========================
+' ' ProductBloc - Product Details State Machine
+' ' =========================
+state "ProductBloc - Details" as PDetails {
+  [*] --> initial
+  initial --> onLoading : ProductDetailsRequested(productId)
+  onLoading --> onLoaded : ProductDetailsFetched
+  onLoading --> error : FetchFailed
+  error --> onLoading : Retry
+}
+
+
+
+
+
+@enduml

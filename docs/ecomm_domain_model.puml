@@ -1,0 +1,96 @@
+@startuml ecomm_uml_diagram
+title Ecommerce App - UML Diagram (Domain Model + Key Status Enums)
+
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+
+' =========================
+' Presentation Layer Enums
+' =========================
+package "Presentation Layer (BLoC/UI)" {
+  enum ProductStatus {
+    initial
+    onLoading
+    onLoaded
+    error
+  }
+
+  note right of ProductStatus
+  UI/BLoC state for product fetching.
+  Not persisted as business data.
+  end note
+}
+
+' =========================
+' Domain Layer Enums
+' =========================
+package "Domain Layer" {
+
+  enum OrderStatus {
+    PENDING
+    PAID
+    FAILED
+    CANCELLED
+  }
+
+  enum PaymentStatus {
+    INITIATED
+    APPROVED
+    DECLINED
+    ERROR
+  }
+
+  class Product {
+    id: String
+    name: String
+    description: String
+    price: double
+    stockQty: int
+    imageUrl: String
+  }
+
+  class CartItem {
+    quantity: int
+    +subtotal(): double
+  }
+
+  class Order {
+    id: String
+    +totalAmount: double
+    status: OrderStatus
+    createdAt: DateTime
+  }
+
+  class PaymentTransaction {
+    transactionId: String
+    amount: double
+    status: PaymentStatus
+    responseCode: String
+    responseMessage: String
+    createdAt: DateTime
+  }
+
+  ' =========================
+  ' Relationships
+  ' =========================
+  CartItem "*" --> "1" Product : product
+  Order "1" *-- "*" CartItem : items (composition)
+  Order "1" o-- "*" PaymentTransaction : payment attempts (retries)
+
+  ' =========================
+  ' Notes (business meaning)
+  ' =========================
+  note right of Order
+  Order is the business record.
+  - Created first (status=PENDING)
+  - totalAmount derived from CartItems
+  end note
+
+  note right of PaymentTransaction
+  PaymentTransaction is an attempt to pay an Order.
+  - INITIATED -> APPROVED / DECLINED / ERROR
+  - multiple attempts allowed (retries)
+  end note
+}
+
+@enduml

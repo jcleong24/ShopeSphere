@@ -31,7 +31,9 @@ Future<void> main() async {
               productRepository: context.read<ProductRepository>(),
             )..add(const ProductRequested()),
           ),
-          BlocProvider<CartBloc>(create: (context) => CartBloc()),
+          BlocProvider<CartBloc>(
+            create: (context) => CartBloc(),
+          ),
         ],
         child: const MyApp(),
       ),

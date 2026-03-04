@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/models/order.dart' as domain;
 
 abstract class OrderRepository {
@@ -9,4 +11,27 @@ abstract class OrderRepository {
     required String orderId,
     required String status, // store as "PENDING"/"PAID"/...
   });
+}
+
+class FirebaseOrderRepository implements OrderRepository {
+  final FirebaseFirestore firestore;
+
+  FirebaseOrderRepository(this.firestore);
+
+  @override
+  Future<String> createOrder(domain.Order order) async {
+    final docRef = await firestore.collection('orders').add(order.toJson());
+    return docRef.id;
+  }
+
+  @override
+  Future<void> updateOrderStatus({
+    required String orderId,
+    required String status,
+  }) async {
+    await firestore.collection('orders').doc(orderId).update({
+      'status': status,
+      'updatedAt': FieldValue.serverTimestamp(),
+    });
+  }
 }

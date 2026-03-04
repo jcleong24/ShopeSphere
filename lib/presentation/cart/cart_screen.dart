@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_user_ecomm_app/domain/bloc/cart/cart_event.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../core/routers/route_name.dart';
 import '../../core/theme/style_manager.dart';
 import '../../domain/bloc/cart/cart_bloc.dart';
 import '../../domain/bloc/cart/cart_state.dart';
@@ -150,11 +152,7 @@ class CartScreen extends StatelessWidget {
                         const SizedBox(height: 12),
                         ElevatedButton(
                           onPressed: () {
-                            // next step: go checkout
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Checkout: coming next')),
-                            );
+                            context.push(RouteNames.checkout);
                           },
                           child: const Text('Checkout'),
                         ),

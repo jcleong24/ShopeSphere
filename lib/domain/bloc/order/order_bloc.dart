@@ -12,12 +12,12 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final OrderRepository orderRepository;
 
   OrderBloc({required this.orderRepository}) : super(const OrderState()) {
-    on<OrderPlaced>(_onOrderPlaced);
+    on<OrderPlacedEvent>(_onOrderPlaced);
     on<OrderReset>(_onReset);
   }
 
   Future<void> _onOrderPlaced(
-    OrderPlaced event,
+    OrderPlacedEvent event,
     Emitter<OrderState> emit,
   ) async {
     if (event.cartItems.isEmpty) {

@@ -8,10 +8,9 @@ abstract class OrderEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class OrderPlaced extends OrderEvent {
+class OrderPlacedEvent extends OrderEvent {
   final List<CartItem> cartItems;
-
-  const OrderPlaced(this.cartItems);
+  const OrderPlacedEvent(this.cartItems);
 
   @override
   List<Object?> get props => [cartItems];

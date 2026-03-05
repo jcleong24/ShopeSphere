@@ -19,14 +19,23 @@ class CheckoutScreen extends StatelessWidget {
     return BlocListener<OrderBloc, OrderState>(
       listener: (context, state) {
         if (state.status == OrderSubmitStatus.success) {
+          final orderId = state.orderId;
+
+          if (orderId == null) return;
+
+          final totalAmount = context.read<CartBloc>().state.totalAmount;
+          debugPrint('NAV payment extra: orderId=$orderId amount=$totalAmount');
+          // Navigate back to payment screen
+          context.push(RouteNames.payment, extra: {
+            'orderId': orderId,
+            'amount': totalAmount,
+          });
+
           context.read<CartBloc>().add(const CartClearedEvent());
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Order created: ${state.orderId}')),
-          );
-
-          // Navigate back to payment screen
-          context.go(RouteNames.home);
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(content: Text('Order created: ${state.orderId}')),
+          // );
         }
 
         if (state.status == OrderSubmitStatus.failure) {

@@ -1,6 +1,8 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_user_ecomm_app/data/repositories/payment_repository.dart';
+import 'package:flutter_user_ecomm_app/data/services/stripe_payment_service.dart';
 import 'package:flutter_user_ecomm_app/domain/bloc/order/order_bloc.dart';
 import 'core/routers/app_router.dart';
 import 'core/theme/app_theme.dart';
@@ -42,6 +44,9 @@ Future<void> main() async {
           create: (context) =>
               FirebasePaymentRepository(FirebaseFirestore.instance),
         ),
+        RepositoryProvider<StripePaymentService>(
+          create: (_) => StripePaymentService(FirebaseFunctions.instance),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -62,6 +67,7 @@ Future<void> main() async {
             create: (context) => PaymentBloc(
               paymentRepository: context.read<PaymentRepository>(),
               orderRepository: context.read<OrderRepository>(),
+              stripePaymentService: context.read<StripePaymentService>(),
             ),
           ),
         ],

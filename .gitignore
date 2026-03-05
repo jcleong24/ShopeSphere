@@ -43,5 +43,18 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+
+functions/.env
+functions/.runtimeconfig.json
+functions/.firebase/
+functions/lib/
+
+node_modules/
+.env
+.firebase/
+firebase-debug.log
+*.log
+.runtimeconfig.json
+
 # Firebase admin key (seeding script)
 seed/serviceAccountKey.json

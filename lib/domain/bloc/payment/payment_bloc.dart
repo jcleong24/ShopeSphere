@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_user_ecomm_app/domain/bloc/payment/payment_event.dart';
@@ -150,10 +151,12 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
       // Call Firebase function to create PaymentIntent
       final res = await stripePaymentService.createPaymentIntent(
         orderId: orderId,
-        amountIntCents: amountInCents,
+        amountInCents: amountInCents,
         currency: 'myr',
       );
 
+      debugPrint("After Stripe payment amount RM: $amount");
+      debugPrint("Stripe payment cents: $amountInCents");
       final clientSecret = res['clientSecret'] as String;
 
       // Init PaymentSheet

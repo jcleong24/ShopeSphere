@@ -1,4 +1,5 @@
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/material.dart';
 
 class StripePaymentService {
   final FirebaseFunctions functions;
@@ -7,17 +8,18 @@ class StripePaymentService {
 
   Future<Map<String, dynamic>> createPaymentIntent({
     required String orderId,
-    required int amountIntCents,
+    required int amountInCents,
     String currency = 'myr',
   }) async {
     final callable = functions.httpsCallable('createPaymentIntent');
 
     final res = await callable.call({
       'orderId': orderId,
-      'amountIntCents': amountIntCents,
+      'amount': amountInCents,
       'currency': currency,
     });
 
+    debugPrint('Calling function with cents=$amountInCents');
     final data = Map<String, dynamic>.from(res.data as Map);
     return data;
   }

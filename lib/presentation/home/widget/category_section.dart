@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import '../../../core/routers/route_name.dart';
-import '../../../core/theme/style_manager.dart';
+import '../models/category_card_data.dart';
 import 'category_card.dart';
+import 'home_header_sub.dart';
 
 class CategorySection extends StatelessWidget {
   final List<CategoryCardData> categories;
-  final String title;
 
   const CategorySection({
     super.key,
     required this.categories,
-    this.title = 'Categories',
   });
 
   @override
@@ -19,25 +16,7 @@ class CategorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: StyleManager.headingSmall(),
-            ),
-            InkWell(
-              onTap: () {
-                context.push(RouteNames.home);
-              },
-              child: Text(
-                'View All',
-                style: StyleManager.caption(),
-              ),
-            ),
-          ],
-        ),
+        const HomeHeaderSub(title: 'Categories'),
         const SizedBox(height: 16),
         LayoutBuilder(
           builder: (context, constraints) {
@@ -55,7 +34,7 @@ class CategorySection extends StatelessWidget {
                   .map(
                     (category) => SizedBox(
                       width: itemWidth,
-                      child: CategoryCard(data: category),
+                      child: CategoryCard(category: category),
                     ),
                   )
                   .toList(),

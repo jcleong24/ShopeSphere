@@ -7,6 +7,7 @@ import 'package:flutter_user_ecomm_app/domain/bloc/product/product_state.dart';
 import 'package:flutter_user_ecomm_app/presentation/home/models/promo_item.dart';
 import 'package:flutter_user_ecomm_app/presentation/home/widget/category_section.dart';
 import 'package:flutter_user_ecomm_app/presentation/home/widget/home_header.dart';
+import 'package:flutter_user_ecomm_app/presentation/home/widget/home_header_sub.dart';
 import 'package:flutter_user_ecomm_app/presentation/home/widget/home_search_bar.dart';
 import 'package:flutter_user_ecomm_app/presentation/home/widget/promo_auto_slider.dart';
 import 'package:flutter_user_ecomm_app/presentation/response_page_padding.dart';
@@ -14,6 +15,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/routers/route_name.dart';
 import 'home/models/category_card_data.dart';
+import 'home/widget/trending_section.dart';
 
 class ProductListScreen extends StatelessWidget {
   const ProductListScreen({super.key});
@@ -97,10 +99,28 @@ class ProductListScreen extends StatelessWidget {
                           onSearchPressed: () => context.push(RouteNames.cart),
                         ),
                         const SizedBox(height: 16),
-                        const PromoSlider(items: _promoItems),
-                        const SizedBox(height: 16),
-                        const CategorySection(
-                          categories: _categories,
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const PromoSlider(items: _promoItems),
+                                const SizedBox(height: 13),
+                                const HomeHeaderSub(title: 'Categories'),
+                                const SizedBox(height: 16),
+                                const CategorySection(
+                                  categories: _categories,
+                                ),
+                                const SizedBox(height: 16),
+                                const HomeHeaderSub(title: 'Trending Products'),
+                                const SizedBox(height: 16),
+                                TrendingSection(
+                                  products: state.products,
+                                ),
+                                const SizedBox(height: 16),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),

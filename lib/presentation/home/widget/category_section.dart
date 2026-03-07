@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/category_card_data.dart';
 import 'category_card.dart';
-import 'home_header_sub.dart';
 
 class CategorySection extends StatelessWidget {
   final List<CategoryCardData> categories;
@@ -16,8 +15,6 @@ class CategorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const HomeHeaderSub(title: 'Categories'),
-        const SizedBox(height: 16),
         LayoutBuilder(
           builder: (context, constraints) {
             final width = constraints.maxWidth;

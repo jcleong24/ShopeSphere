@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../presentation/product_details_screen.dart';
 import '../../presentation/cart/cart_screen.dart';
 import '../../presentation/checkout_screen.dart';
-import '../../presentation/home_screen.dart';
+import '../../presentation/home/home_screen.dart';
 import '../../presentation/payment_screen.dart';
 // import '../../screens/splash_screen.dart';
 

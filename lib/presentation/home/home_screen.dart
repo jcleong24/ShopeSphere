@@ -14,8 +14,8 @@ import 'package:flutter_user_ecomm_app/presentation/response_page_padding.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/routers/route_name.dart';
-import 'home/models/category_card_data.dart';
-import 'home/widget/trending_section.dart';
+import 'models/category_card_data.dart';
+import 'widget/trending_section.dart';
 
 class ProductListScreen extends StatelessWidget {
   const ProductListScreen({super.key});

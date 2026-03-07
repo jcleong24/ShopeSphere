@@ -11,9 +11,9 @@ import 'package:flutter_user_ecomm_app/presentation/home/widget/category_section
 import 'package:flutter_user_ecomm_app/presentation/response_page_padding.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/routers/route_name.dart';
-import '../domain/bloc/product/product_event.dart';
-import '../domain/bloc/product/product_state.dart';
+import '../../core/routers/route_name.dart';
+import '../../domain/bloc/product/product_event.dart';
+import '../../domain/bloc/product/product_state.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -93,14 +93,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   void _stopAutoSlide() {
     _autoSlideTimer?.cancel();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    _stopAutoSlide();
-    _pageController.dispose();
-    super.dispose();
   }
 
   Widget _buildPromoCard({
@@ -184,7 +176,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 ),
                 child: IconButton(
                   iconSize: 35,
-                  icon: const Icon(Icons.shopping_bag_outlined),
+                  icon: Icon(icon),
                   color: ColorManager.white,
                   onPressed: () {},
                 ),
@@ -211,6 +203,14 @@ class _ProductListScreenState extends State<ProductListScreen> {
         borderRadius: BorderRadius.circular(20),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _stopAutoSlide();
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override

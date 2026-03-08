@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_user_ecomm_app/core/theme/color_manager.dart';
 import 'package:flutter_user_ecomm_app/domain/models/product.dart';
 import 'package:flutter_user_ecomm_app/presentation/home/widget/trending_card.dart';
 import 'package:go_router/go_router.dart';
@@ -106,7 +107,7 @@ class _TrendingSectionState extends State<TrendingSection> {
               decoration: BoxDecoration(
                 color: _currentPage == index
                     ? Theme.of(context).primaryColor
-                    : Colors.grey.withValues(alpha: 0.35),
+                    : ColorManager.borderButton,
                 borderRadius: BorderRadius.circular(20),
               ),
             ),

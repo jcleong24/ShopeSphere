@@ -17,6 +17,8 @@ class ColorManager {
   static const Color border = Color(0xCCE5E7EB);
   static const Color borderTransparent = Color(0x2EFFFFFF);
 
+  static Color borderButton = Colors.grey.withValues(alpha: 0.35);
+
   static const Color white = Color(0xFFFFFFFF);
   static const Color whiteTransparent = Color(0xE5FFFFFF);
   // static Color border = Colors.white.withOpacity(0.16);

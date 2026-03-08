@@ -11,6 +11,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData? trailingIcon;
   final VoidCallback? onTrailingPressed;
   final Widget? trailingWidget;
+  final Color backgroundColor;
 
   const CustomAppBar(
       {super.key,
@@ -20,7 +21,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.iconColor = Colors.black,
       this.trailingIcon,
       this.onTrailingPressed,
-      this.trailingWidget});
+      this.trailingWidget,
+      this.backgroundColor = Colors.transparent});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 10);
@@ -31,13 +33,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsetsDirectional.fromSTEB(8, 10, 10, 0.0),
       child: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: ColorManager.backgroundColor,
+        backgroundColor: Colors.transparent,
         elevation: elevation,
         centerTitle: false,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_outlined),
-          color: iconColor,
-          onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.35), // background color
+              shape: BoxShape.circle, // circular background
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new_outlined),
+              color: iconColor,
+              onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
+            ),
+          ),
         ),
         title: Text(title, style: StyleManager.headingSemiMedium()),
         actions: [

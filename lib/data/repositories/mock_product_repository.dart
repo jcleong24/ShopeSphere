@@ -13,7 +13,7 @@
 //         description: 'Comfortable running shoes',
 //         price: 399.0,
 //         stockQty: 12,
-//         imageUrl: 'https://picsum.photos/300?1',
+//         imageUrls: 'https://picsum.photos/300?1',
 //       ),
 //       Product(
 //         id: '102',
@@ -21,7 +21,7 @@
 //         description: 'Premium daily carry bag',
 //         price: 259.0,
 //         stockQty: 5,
-//         imageUrl: 'https://picsum.photos/300?2',
+//         imageUrls: 'https://picsum.photos/300?2',
 //       ),
 //       Product(
 //         id: '103',
@@ -29,11 +29,11 @@
 //         description: 'Lightweight running shoes',
 //         price: 499.0,
 //         stockQty: 8,
-//         imageUrl: 'https://picsum.photos/300?3',
+//         imageUrls: 'https://picsum.photos/300?3',
 //       ),
 //     ];
 //   }
-  
+
 //   @override
 //   Future<Product> fetchProductById(String id) {
 //     // TODO: implement fetchProductById

@@ -3,14 +3,14 @@ class OrderItem {
   final String name;
   final double price;
   final int quantity;
-  final String imageUrl;
+  final String thumbnailUrl;
 
   const OrderItem({
     required this.productId,
     required this.name,
     required this.price,
     required this.quantity,
-    required this.imageUrl,
+    required this.thumbnailUrl,
   });
 
   double get subtotal => price * quantity;
@@ -20,7 +20,7 @@ class OrderItem {
         'name': name,
         'price': price,
         'quantity': quantity,
-        'imageUrl': imageUrl,
+        'imageUrls': thumbnailUrl,
       };
 
   factory OrderItem.fromJson(Map<String, dynamic> json) => OrderItem(
@@ -28,6 +28,6 @@ class OrderItem {
         name: (json['name'] ?? '') as String,
         price: ((json['price'] ?? 0) as num).toDouble(),
         quantity: ((json['quantity'] ?? 0) as num).toInt(),
-        imageUrl: (json['imageUrl'] ?? '') as String,
+        thumbnailUrl: (json['thumbnailUrl'] ?? '') as String,
       );
 }

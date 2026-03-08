@@ -6,7 +6,9 @@ class Product {
   final String description;
   final double price;
   final int stockQty;
-  final String imageUrl;
+  final String thumbnailUrl;
+
+  final List<String> imageUrls;
 
   const Product({
     required this.id,
@@ -14,7 +16,8 @@ class Product {
     required this.description,
     required this.price,
     required this.stockQty,
-    required this.imageUrl,
+    required this.thumbnailUrl,
+    required this.imageUrls,
   });
 
   bool get isOutOfStock => stockQty <= 0;
@@ -27,7 +30,42 @@ class Product {
       description: (data['description'] ?? '') as String,
       price: (data['price'] as num).toDouble(),
       stockQty: (data['stockQty'] ?? 0) as int,
-      imageUrl: (data['imageUrl'] ?? '') as String,
+      thumbnailUrl: (data['thumbnailUrl'] ?? '') as String,
+      imageUrls: (data['imageUrls'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          [],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'description': description,
+      'price': price,
+      'stockQty': stockQty,
+      'thumbnailUrl': thumbnailUrl,
+      'imageUrls': imageUrls,
+    };
+  }
+
+  Product copyWith({
+    String? id,
+    String? name,
+    String? description,
+    double? price,
+    int? stockQty,
+    String? thumbnailUrl,
+    List<String>? imageUrls,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      stockQty: stockQty ?? this.stockQty,
+      thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
+      imageUrls: imageUrls ?? this.imageUrls,
     );
   }
 }

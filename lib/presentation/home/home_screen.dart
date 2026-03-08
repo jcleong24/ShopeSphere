@@ -146,7 +146,6 @@ class ProductListScreen extends StatelessWidget {
               );
 
             case ProductStatus.initial:
-            default:
               return const SizedBox.shrink();
           }
         },

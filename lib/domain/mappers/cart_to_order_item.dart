@@ -9,6 +9,6 @@ OrderItem toOrderItem(CartItem cartItem) {
     name: p.name,
     price: p.price,
     quantity: cartItem.quantity,
-    imageUrl: p.imageUrl,
+    thumbnailUrl: p.thumbnailUrl,
   );
 }

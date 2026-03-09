@@ -89,11 +89,13 @@ class CheckoutScreen extends StatelessWidget {
                   _CheckoutTotalRow(
                     label: 'Items',
                     value: '${state.totalQuantity}',
+                    isBold: false,
                   ),
                   const SizedBox(height: 6),
                   _CheckoutTotalRow(
                     label: 'Total',
                     value: 'RM ${state.totalAmount.toStringAsFixed(2)}',
+                    isBold: false,
                   ),
                   const SizedBox(height: 12),
                   BlocBuilder<OrderBloc, OrderState>(

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_user_ecomm_app/core/theme/color_manager.dart'
-    show ColorManager;
 import 'package:flutter_user_ecomm_app/core/theme/style_manager.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -40,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.35), // background color
+              color: Colors.black.withValues(alpha: 0.35), // background color
               shape: BoxShape.circle, // circular background
             ),
             child: IconButton(

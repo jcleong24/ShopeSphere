@@ -23,7 +23,7 @@ class CartIconButton extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.35), // background color
+                color: Colors.black.withValues(alpha: 0.35), // background color
                 shape: BoxShape.circle, // circular background
               ),
               child: IconButton(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_user_ecomm_app/core/theme/color_manager.dart';
-
-import '../../../domain/models/product.dart';
 import '../../widgets/custom_page_indicator.dart';
 
 class ProductImageCarousel extends StatefulWidget {

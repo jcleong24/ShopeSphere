@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_user_ecomm_app/core/theme/color_manager.dart'
-    show ColorManager;
 import 'package:flutter_user_ecomm_app/core/theme/style_manager.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

@@ -17,7 +17,7 @@ class HomeHeaderSub extends StatelessWidget {
       children: [
         Text(
           title,
-          style: StyleManager.headingSmall(),
+          style: StyleManager.headingExtraSmall(),
         ),
         InkWell(
           onTap: () {

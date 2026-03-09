@@ -25,11 +25,11 @@ class TrendingCard extends StatelessWidget {
             color: ColorManager.surface,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: ColorManager.border.withOpacity(0.35),
+              color: ColorManager.border.withValues(alpha: 0.35),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.03),
+                color: Colors.black.withValues(alpha: 0.03),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),

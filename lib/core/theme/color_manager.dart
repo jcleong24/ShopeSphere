@@ -22,7 +22,7 @@ class ColorManager {
 
   static const Color white = Color(0xFFFFFFFF);
   static const Color whiteTransparent = Color(0xE5FFFFFF);
-  // static Color border = Colors.white.withOpacity(0.16);
+  // static Color border = Colors.white.withValues(alpha : 0.16);
 
   // Status
   static const Color success = Color(0xFF16A34A);

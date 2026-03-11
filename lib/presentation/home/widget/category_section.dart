@@ -4,10 +4,12 @@ import 'category_card.dart';
 
 class CategorySection extends StatelessWidget {
   final List<CategoryCardData> categories;
+  final void Function(CategoryCardData category)? onCategoryTap;
 
   const CategorySection({
     super.key,
     required this.categories,
+    this.onCategoryTap,
   });
 
   @override
@@ -15,29 +17,17 @@ class CategorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final width = constraints.maxWidth;
-            final crossAxisCount = width >= 600 ? 4 : 2;
-            const spacing = 12.0;
-
-            final itemWidth =
-                (width - (spacing * (crossAxisCount - 1))) / crossAxisCount;
-
-            return Wrap(
-              spacing: spacing,
-              runSpacing: spacing,
-              children: categories
-                  .map(
-                    (category) => SizedBox(
-                      width: itemWidth,
-                      child: CategoryCard(category: category),
-                    ),
-                  )
-                  .toList(),
-            );
-          },
-        ),
+        Row(
+          children: categories
+              .take(4)
+              .map(
+                (category) => CategoryCard(
+                  category: category,
+                  onTap: () => onCategoryTap?.call(category),
+                ),
+              )
+              .toList(),
+        )
       ],
     );
   }

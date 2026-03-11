@@ -22,20 +22,20 @@ class ProductListScreen extends StatelessWidget {
 
   static const List<CategoryCardData> _categories = [
     CategoryCardData(
-      title: 'Fruits',
-      icon: Icons.apple_outlined,
-    ),
-    CategoryCardData(
-      title: 'Vegetables',
-      icon: Icons.eco_outlined,
-    ),
-    CategoryCardData(
-      title: 'Drinks',
-      icon: Icons.local_drink_outlined,
-    ),
-    CategoryCardData(
-      title: 'Snacks',
+      title: 'Food',
       icon: Icons.cookie_outlined,
+    ),
+    CategoryCardData(
+      title: 'Furniture',
+      icon: Icons.chair_alt_outlined,
+    ),
+    CategoryCardData(
+      title: 'Gadget',
+      icon: Icons.electrical_services_outlined,
+    ),
+    CategoryCardData(
+      title: 'Sports',
+      icon: Icons.run_circle_outlined,
     ),
   ];
 
@@ -111,8 +111,8 @@ class ProductListScreen extends StatelessWidget {
                                 const CategorySection(
                                   categories: _categories,
                                 ),
-                                const SizedBox(height: 16),
-                                const HomeHeaderSub(title: 'Trending Products'),
+                                const SizedBox(height: 20),
+                                const HomeHeaderSub(title: 'Top Products'),
                                 const SizedBox(height: 16),
                                 TrendingSection(
                                   products: state.products,
